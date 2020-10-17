@@ -7,6 +7,7 @@ from pathlib import Path
 from packaging import version
 from plumbum import TF, colors, local
 from plumbum.cmd import git
+from pydantic import BaseModel
 
 from .types import OptBool, OptStr, StrOrPath
 
@@ -20,6 +21,10 @@ REPLACEMENTS = (
     (re.compile(r"^gl:/?(.*\.git)$"), r"https://gitlab.com/\1"),
     (re.compile(r"^gl:/?(.*)$"), r"https://gitlab.com/\1.git"),
 )
+
+
+class VCSRepo(BaseModel):
+    url: str
 
 
 def is_git_repo_root(path: Path) -> bool:
