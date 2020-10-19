@@ -175,7 +175,7 @@ class Question(BaseModel):
                 result = self.questionary.answers_last[self.var_name]
             except KeyError:
                 result = self.render_value(self.default)
-        result = cast_answer_type(result, cast_fn)
+            result = cast_answer_type(result, cast_fn)
         if not for_rendering or self.type_name == "bool":
             return result
         if result is None:
