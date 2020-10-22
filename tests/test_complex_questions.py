@@ -168,8 +168,8 @@ def test_api_str_data(tmp_path):
             choose_list: "first"
             choose_tuple: "second"
             choose_dict: "third"
-            choose_number: 1.0
-            minutes_under_water: "10"
+            choose_number: "0"
+            minutes_under_water: 10
             optional_value: null
         """
     )
@@ -239,7 +239,7 @@ def test_cli_interatively_with_flag_data_and_type_casts(tmp_path: Path, spawn):
             choose_list: "second"
             choose_tuple: "third"
             choose_dict: "first"
-            choose_number: 1.0
+            choose_number: 1
             minutes_under_water: 10
             optional_value: null
         """
