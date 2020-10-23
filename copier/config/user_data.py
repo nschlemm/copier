@@ -175,7 +175,7 @@ class Question(BaseModel):
                 result = self.questionary.answers_last[self.var_name]
             except KeyError:
                 result = self.render_value(self.default)
-            result = cast_answer_type(result, cast_fn)
+        result = cast_answer_type(result, cast_fn)
         if not for_rendering or self.type_name == "bool":
             return result
         if result is None:
@@ -470,9 +470,6 @@ def cast_answer_type(answer: Any, type_fn: Callable) -> Any:
     # Skip casting None into "None"
     if type_fn is str and answer is None:
         return answer
-    # Parse correctly bools as 1, true, yes...
-    if type_fn is bool and isinstance(answer, str):
-        return parse_yaml_string(answer)
     try:
         return type_fn(answer)
     except (TypeError, AttributeError):
